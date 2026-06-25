@@ -17,7 +17,5 @@ config:
         
 # ======= 酷安 ======= #
 
-        # issue#15提供
         DOMAIN,api.coolapk.com
-        # issue#62
         DOMAIN,api2.coolapk.com
