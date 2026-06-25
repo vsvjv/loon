@@ -86,3 +86,8 @@ config:
         # DOMAIN,www.douyin.com
         # API域名
         # DOMAIN-SUFFIX,snssdk.com
+        
+# ======= 头条 ======= #
+
+        # 网友提供头条IP定位接口
+        DOMAIN-SUFFIX,toutiaoapi.com
