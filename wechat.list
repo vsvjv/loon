@@ -9,12 +9,21 @@
 # TOTAL: 33
 DOMAIN,apd-pcdnwxlogin.teg.tencent-cloud.net
 DOMAIN,btrace.qq.com
+DOMAIN,dl.wechat.com
 DOMAIN,dldir1.qq.com
+DOMAIN,sgfindershort.wechat.com
+DOMAIN,sgilinkshort.wechat.com
+DOMAIN,sglong.wechat.com
+DOMAIN,sgminorshort.wechat.com
+DOMAIN,sgquic.wechat.com
+DOMAIN,sgshort.wechat.com
 DOMAIN,slife.xy-asia.com
 DOMAIN,soup.v.qq.com
+DOMAIN,tencentmap.wechat.com
 DOMAIN,vweixinf.tc.qq.com
 DOMAIN,weixin110.qq.com
 DOMAIN,wup.imtt.qq.com
+DOMAIN,wx.tenpay.com
 DOMAIN-SUFFIX,iot-tencent.com
 DOMAIN-SUFFIX,lbs.gtimg.com
 DOMAIN-SUFFIX,map.qq.com
