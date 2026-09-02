@@ -12960,7 +12960,7 @@ DOMAIN-SUFFIX,amcjajogm.in
 DOMAIN-SUFFIX,amcraahmou.com
 DOMAIN-SUFFIX,amdahlbr.com
 DOMAIN-SUFFIX,amdbughamr.in
-DOMAIN-SUFFIX,amdc.alipay.com
+#DOMAIN-SUFFIX,amdc.alipay.com
 DOMAIN-SUFFIX,amdcopen.m.taobao.com
 DOMAIN-SUFFIX,amebassamshoo.cyou
 DOMAIN-SUFFIX,ameenoxidant.shop
@@ -84844,7 +84844,7 @@ DOMAIN-SUFFIX,logging.prefixbox.com
 DOMAIN-SUFFIX,logging.pw.adn.cloud
 DOMAIN-SUFFIX,loggingapi.spingo.com
 DOMAIN-SUFFIX,loggly.cheatsheet.com
-DOMAIN-SUFFIX,loggw-ex.alipay.com
+#DOMAIN-SUFFIX,loggw-ex.alipay.com
 DOMAIN-SUFFIX,loggw-exsdk.alipay.com
 DOMAIN-SUFFIX,loggw.alipay.com.cn
 DOMAIN-SUFFIX,loggw.alipay.com
