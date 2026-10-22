@@ -1,0 +1,13 @@
+#!name = 闲鱼去广告
+#!desc = 仅移除开屏广告和“我的”页面的闲鱼回收横幅
+#!author = vv
+
+[Rewrite]
+# 开屏广告
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlecommerce\.splash\.ads reject-dict
+
+# “我的”页面 - 闲鱼回收横幅（sections 中 index="2"）
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/ response-body-json-jq '.data.container.sections |= if . then map(select((.index | tostring) != "2")) else . end'
+
+[MitM]
+hostname = acs.m.goofish.com
