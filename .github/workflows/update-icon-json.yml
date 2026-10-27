@@ -1,0 +1,61 @@
+name: Update icon.json
+
+on:
+  push:
+    paths:
+      - "icon/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-icon-json
+  cancel-in-progress: false
+
+jobs:
+  update-icon-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate icon.json
+        env:
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          python3 - << 'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          icon_dir = Path("icon")
+          names = sorted(
+              (p.name for p in icon_dir.iterdir() if p.is_file() and p.suffix.lower() == ".png"),
+              key=str.lower,
+          )
+          base = f"https://raw.githubusercontent.com/{os.environ['REPO']}/{os.environ['BRANCH']}/icon"
+          data = {
+              "name": "MyIconPack",
+              "description": "vsvjv/loon icon pack",
+              "icons": [{"name": n, "url": f"{base}/{n}"} for n in names],
+          }
+          Path("icon.json").write_text(
+              json.dumps(data, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"Generated icon.json with {len(names)} icons")
+          PY
+
+      - name: Commit icon.json if changed
+        run: |
+          if [ -z "$(git status --porcelain -- icon.json)" ]; then
+            echo "icon.json is already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add icon.json
+          git commit -m "chore: auto update icon.json [skip ci]"
+          git push
