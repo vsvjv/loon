@@ -2,6 +2,9 @@
 #!desc = 仅移除开屏广告和“我的”页面的闲鱼回收横幅
 #!author = vv
 
+[Rule]
+AND,((URL-REGEX,"^http:\/\/.+\/amdc\/mobileDispatch"),(USER-AGENT,"%E9%97%B2%E9%B1%BC*")),REJECT
+
 [Rewrite]
 # 开屏广告
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlecommerce\.splash\.ads reject-dict
@@ -9,5 +12,13 @@
 # “我的”页面 - 闲鱼回收横幅（sections 中 index="2"）
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/ response-body-json-jq '.data.container.sections |= if . then map(select((.index | tostring) != "2")) else . end'
 
+# 这些宝贝超好卖（“我的”页面常见的闲鱼回收/转卖横幅推荐，如不需要保留可一并拦截；若只需用下方脚本处理个人主页，可在规则行前加 # 注释）
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idle\.item\.resell\.recommendorhotcate\/1\.0 reject-dict
+
+[Script]
+# 个人主页（“我的”页面，包含移除闲鱼回收等横幅模块）
+http-response ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.idle\.user\.page\.my\.adapter\/ script-path = https://github.com/ishowshu/qx/raw/refs/heads/main/script/goofish.js, requires-body = true, tag = 个人主页
+
 [MitM]
 hostname = acs.m.goofish.com
+
